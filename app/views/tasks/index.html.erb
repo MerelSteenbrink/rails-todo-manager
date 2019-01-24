@@ -1,6 +1,20 @@
-<h1>Your Tasks</h1>
-<ul>
-	<% @tasks.each do |task| %>
-		<li><%= task.title %></li>
-	<% end %>
+<h1>Your tasks</h1>
+
+<ul >
+  <% @tasks.each do |task| %>
+    <li>
+      <% if task.completed %>
+        [ x ]
+      <% else %>
+       [  ]
+      <% end %>
+      <%= link_to task.title, task_path(task.id) %>
+    </li>
+  <% end %>
 </ul>
+
+
+
+<%= link_to new_task_path do %>
+  <i class="fa fa-plus"></i> Add a new task
+<% end %>
